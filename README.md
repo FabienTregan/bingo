@@ -7,7 +7,9 @@ Les différents grilles sont dans bingo.
 
 Pour créer une nouvelle grille dans un simple fichier:
 - modifier la grille [bingo_boulet_dessin.html](https://github.com/Aerdalis/bingo/blob/master/bingos/bingo_boulet_dessin.html)
+
 Ou
+
 - remplir [contenu.js](https://github.com/Aerdalis/bingo/blob/master/contenu.js)
 - ouvrir [bingo.html](https://github.com/Aerdalis/bingo/blob/master/bingo.html)
 - supprimer 
