@@ -1,0 +1,20 @@
+# Bingo
+Générateur de grille de bingo, lancé suite aux twitchs dessins de Boulet.
+- [Grille de Boulet](https://github.com/Aerdalis/bingo/blob/master/bingos/bingo_boulet_dessin.html)
+
+
+Les différents grilles sont dans bingo.
+
+Pour créer une nouvelle grille dans un simple fichier:
+- modifier la grille [bingo_boulet_dessin.html](https://github.com/Aerdalis/bingo/blob/master/bingos/bingo_boulet_dessin.html)
+Ou
+- remplir [contenu.js](https://github.com/Aerdalis/bingo/blob/master/contenu.js)
+- ouvrir [bingo.html](https://github.com/Aerdalis/bingo/blob/master/bingo.html)
+- supprimer 
+```
+<script type="application/javascript" src="contenu.js"></script>	<!-- change here to load specific bingo configuration -->
+```
+- copier le contenu modifié de contenu.js immédiatement après 
+```
+	//<![CDATA[
+```
