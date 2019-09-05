@@ -48,39 +48,45 @@
 	<style type="text/css">
 		/* vars */
 		:root {
-			--main_color: #D8761B;
+			--main_color: red;
 			--main_bg_color: #000000;
 			--sel_color: #FFFFFF;
-			--sel_bg_color: #E16E16;
-			--hover_bg_color: #F17E26;
+			--sel_bg_color: #990000;
+			--hover_bg_color: #FF0000;
 		}
 		/* main */
 		body {
 			color: var(--main_color);
 			background-color: var(--main_bg_color);
 			font-family: "Fira Sans", sans-serif;
-			font-size: 1.2em;
+			font-size: 3vh;
 		}
 		h1 {
 			text-align: center;
 			color: var(--main_color);
-			font-size: 2em;
+			font-size: 3vh;
 		}
 		/* table */
 		table {
 			margin: auto auto;
+			height: 80vh;
+			width: 80vh;
 		}
-		table, th, td {
-			border: 2px solid var(--main_color);
+		table, tr, td {
+			border: 2px solid var(--sel_bg_color);
 			border-collapse: collapse;
 		}
 		td {
+			position: relative;
 			color: var(--main_color);
 			background-color: var(--main_bg_color);
-			height: 200px;
-			width: 200px;
-			padding: 10px;
+			padding: 5px;
 			text-align: center;
+		}
+		@supports ( -moz-appearance:none ){
+			td {
+				background-clip: padding-box;
+			}
 		}
 		td:hover, td.selected:hover {
 			color: var(--sel_color);
@@ -102,7 +108,7 @@
 			margin: 10px auto;
 			padding: 10px;
 			text-align: center;
-			width: 200px;
+			width: 10vw;
 		}
 		#reset:hover {
 			color: var(--sel_color);
