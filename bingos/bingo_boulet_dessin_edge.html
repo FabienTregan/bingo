@@ -99,7 +99,9 @@
 		}
 	}
 	
-	window.addEventListener('load', generate, false);
+	window.addEventListener ? 
+window.addEventListener("load",generate,false) : 
+window.attachEvent && window.attachEvent("onload",generate);
 	//]]>
 	</script>
 	<title></title>
