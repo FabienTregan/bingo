@@ -60,7 +60,28 @@
 	];
 	//<![CDATA[
 	function generate(){
-
+		// vars
+		var tr, td, i, j;
+		var id_content=0;
+		// add title of the bingo
+		document.getElementById('title').textContent = title;
+		document.getElementsByTagName('title')[0].textContent = title;
+		// generate bingo table
+		var table = document.getElementById('grid');
+		table.removeChild(table.firstChild)
+		for (i = 0; i < row; i++) {
+			tr = document.createElement('tr');
+			for (j = 0; j < col; j++) {
+				td = document.createElement('td');
+				td.textContent = bingo[id_content];	// add content
+				td.addEventListener('click', sw_bingo);
+				tr.appendChild(td)
+				id_content=id_content+1;
+			}
+			table.appendChild(tr);
+		}
+		// reset button
+		document.getElementById('reset').addEventListener('click', reset_b);
 	}
 	
 	//functions
@@ -77,6 +98,8 @@
 			td.classList.remove('selected');
 		}
 	}
+	
+	window.addEventListener('load', generate, false);
 	//]]>
 	</script>
 	<title></title>
@@ -151,7 +174,7 @@
 		}
 	</style>
 </head>
-<body onload="generate()">
+<body>
 	<h1 id="title"></h1>
 	<table id="grid"><tbody><tr><td></td></tr></tbody></table>
 	<p id="reset">Effacer</p>
