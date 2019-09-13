@@ -22,3 +22,5 @@ Ou
 ```
 	//<![CDATA[
 ```
+# License
+# Copyleft (ↄ) 2017
