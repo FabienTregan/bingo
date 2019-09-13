@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<!-- Inspiré de la grille créée par kholo et disponible sur le site de -->
+<!-- Inspiré de la grille créée par @kholo et @thenolette et disponible sur le site https://kholo.bit-ronin.net/twitch/bingo_camily.html -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
 <head>
 	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
@@ -22,7 +22,6 @@
 	"Creepy pasta",
 	"Le live dure (bien) plus longtemps que boulet l'avait dit",
 	"Point Melkpat",
-	"Point \"tisane\"",
 	"\"Va comme j'te pousse\"",
 	"\"Je comprends pas ce que tu me dis\"",
 	"Téléphone grésille",
@@ -39,12 +38,12 @@
 	"Petits traits",
 	"Chat: \"J'adore ta voix\"",
 	"Boulet s'amuse du pseudo de quelqu'un",
-	"\"hopla\"",
+	"\"Hopla !\"",
 	"La chaise de bureau grince/se casse/ s’affaisse",
 	"\"pas cher, parlez-en à vos amis\"",
 	"Tisane ou whisky",
 	"Teasing de ouf. \"Je ne peux encore rien dire\"",
-	"\"y a coloc. Hey Coloc ! Je streame la\"",
+	"\"Y a coloc. Hey Coloc ! Je streame la\"",
 	"t-shirt mangez des nouilles",
 	"Voix sensuelle dans le micro",
 	"Point ASMR",
@@ -54,7 +53,9 @@
 	"\"Mais nan mais ça on s'en fout, ça se verra pas\"",
 	"\"C’est la faute du chat\"",
 	"Violet",
-	"Lac du Connermara"
+	"Lac du Connermara",
+	"Dessin sur le bord de la feuille pout expliquer un truc",
+	"Boulet bruite à la bouche ce qu'il dessine"
 	];
 	//<![CDATA[
 	function generate(){
@@ -96,6 +97,11 @@
 			td.classList.remove('selected');
 		}
 	}
+	
+
+	window.addEventListener ? 
+window.addEventListener("load",generate,false) : 
+window.attachEvent && window.attachEvent("onload",generate);
 	//]]>
 	</script>
 	<title></title>
@@ -168,11 +174,16 @@
 			color: var(--sel_color);
 			background-color: var(--sel_bg_color);
 		}
+		#credits {
+			font-size: 1.5vh;
+			text-align: center;
+		}
 	</style>
 </head>
-<body onload="generate()">
+<body>
 	<h1 id="title"></h1>
 	<table id="grid"><tbody><tr><td></td></tr></tbody></table>
 	<p id="reset">Effacer</p>
+	<p id="credits">Inspiré de la grille créée par @kholo et @thenolette. Avec les contributions du chat, dont KrysaliaH, MarieOrtie, majorgrubert, et beaucoup d'oubliés.</p>
 </body>
 </html>
