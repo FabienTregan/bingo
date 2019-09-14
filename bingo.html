@@ -1,58 +1,75 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 
 <html>
+
 <head>
-	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
-	<script type="application/javascript" src="contenu.js"></script>	<!-- change here to load specific bingo configuration -->
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+
+	<!-- change here to load specific bingo configuration -->
+	<script type="application/javascript" src="contenu.js"></script>
 
 	<script type="application/javascript">
 
-		function generate(){
-			// vars
-			var tr, td, i, j
-			var id_content=0
-			// add title of the bingo
-			document.getElementById('title').textContent = title
-			document.getElementsByTagName('title')[0].textContent = title
-			// generates bingo table
-			var table = document.getElementById('grid')
-			table.removeChild(table.firstChild)
-			for (i = 0; i < row; i++) {
-				tr = document.createElement('tr')
-				for (j = 0; j < col; j++) {
-					td = document.createElement('td')
-					td.textContent = bingo[id_content]	// adds content
-					td.addEventListener('click', sw_bingo)
-					tr.appendChild(td)
-					id_content=id_content+1
-				}
-				table.appendChild(tr)
-			}
-			// reset button
-			document.getElementById('reset').addEventListener('click', reset_b)
+		function generate() {
+
+			add_title()
+			add_bingo_table(row, col)
 		}
-		
-		function sw_bingo(evt) {
-			classList = evt.target.classList;
-			if (classList.contains('selected')) {
-				classList.remove('selected')
-			} else {
-				classList.add('selected')
+
+		function add_title() {
+			document.getElementById('title').textContent = title
+			document.title = title
+		}
+
+		function add_bingo_table(nb_rows, nb_columns) {
+
+			var cell_number = 0
+
+			var table = document.getElementById('bingo')
+			table.innerHtml = '<tbody>'
+			for (var i = 0; i < nb_rows; i++) {
+
+				var row = table.insertRow()
+				for (var j = 0; j < nb_columns; j++) {
+
+					var content = bingo[cell_number]
+					add_content(row, content)
+
+					cell_number++
+				}
 			}
 		}
 
-		function reset_b() {
-			for (let td of document.getElementsByTagName('td')) {
-				td.classList.remove('selected')
+		function add_content(row, content) {
+			var cell = row.insertCell()
+			cell.textContent = content
+			cell.addEventListener('click', toggle_mark)
+		}
+
+		function toggle_mark(evt) {
+			classList = evt.target.classList;
+			if (classList.contains('marked')) {
+				classList.remove('marked')
+			} else {
+				classList.add('marked')
+			}
+		}
+
+		function clean_marks() {
+
+			var marked = document.getElementsByClassName('marked')
+
+			while(marked.length > 0) {
+				marked[0].classList.remove('marked')
 			}
 		}
 
 		window.addEventListener('DOMContentLoaded', generate)
-		
+
 	</script>
 
 	<title></title>
-	
+
 	<style type="text/css">
 		/* vars */
 		:root {
@@ -62,6 +79,7 @@
 			--sel_bg_color: #802080;
 			--hover_bg_color: #200220;
 		}
+
 		/* main */
 		body {
 			color: var(--main_color);
@@ -69,21 +87,27 @@
 			font-family: "Fira Sans", sans-serif;
 			font-size: 3vh;
 		}
+
 		h1 {
 			text-align: center;
 			color: var(--main_color);
 			font-size: 3vh;
 		}
+
 		/* table */
 		table {
 			margin: auto auto;
 			height: 80vh;
 			width: 80vh;
 		}
-		table, tr, td {
+
+		table,
+		tr,
+		td {
 			border: 2px solid var(--sel_bg_color);
 			border-collapse: collapse;
 		}
+
 		td {
 			position: relative;
 			color: var(--main_color);
@@ -91,22 +115,28 @@
 			padding: 5px;
 			text-align: center;
 		}
-		@supports ( -moz-appearance:none ){
+
+		@supports (-moz-appearance:none) {
 			td {
 				background-clip: padding-box;
 			}
 		}
-		td:hover, td.selected:hover {
+
+		td:hover,
+		td.marked:hover {
 			color: var(--sel_color);
 			background-color: var(--hover_bg_color);
 		}
-		td.selected {
+
+		td.marked {
 			color: var(--sel_color);
 			background-color: var(--sel_bg_color);
 		}
+
 		#centre {
 			background-color: var(--sel_bg_color);
 		}
+
 		/* reset button */
 		#reset {
 			color: var(--main_color);
@@ -118,16 +148,22 @@
 			text-align: center;
 			width: 10vw;
 		}
+
 		#reset:hover {
 			color: var(--sel_color);
 			background-color: var(--sel_bg_color);
 		}
 	</style>
 </head>
+
 <body>
+
 	<h1 id="title"></h1>
-	<!-- placeholder table -->
-	<table id="grid"><tbody><tr><td></td></tr></tbody></table>
-	<p id="reset">Effacer</p>
+
+	<table id="bingo"></table>
+
+	<p id="reset" onclick="clean_marks()">Effacer</p>
+
 </body>
+
 </html>
