@@ -44,8 +44,8 @@
 
 		function make_cells_same_size(nb_rows, nb_columns) {
 			var root_style = document.documentElement.style
-			root_style.setProperty("--cell-height", (100 / nb_rows) + "%")
-			root_style.setProperty("--cell-width", (100 / nb_columns) + "%")
+			root_style.setProperty("--cell_height", (100 / nb_rows) + "%")
+			root_style.setProperty("--cell_width", (100 / nb_columns) + "%")
 		}
 
 		function add_content(row, content) {
@@ -81,19 +81,20 @@
 	<style type="text/css">
 		/* vars */
 		:root {
-			--main_color: #802080;
-			--main_bg_color: #020202;
+			--main_color: #FF80FF;
+			--main_bg_color: #401040;
 			--sel_color: #FF80FF;
 			--sel_bg_color: #802080;
+			--borders_color: #804080;
 			--hover_bg_color: #200220;
-			--cell-height: auto;
-			--cell-width: auto;
+			--cell_height: auto;
+			--cell_width: auto;
 		}
 
 		/* main */
 		body {
 			color: var(--main_color);
-			background-color: var(--main_bg_color);
+			background-color: black;
 			font-family: "Fira Sans", sans-serif;
 			font-size: 3vh;
 		}
@@ -112,27 +113,19 @@
 			table-layout: fixed;
 		}
 
-		table,
-		tr,
-		td {
-			border: 2px solid var(--sel_bg_color);
-			border-collapse: collapse;
+		table {
+			background: var(--borders_color)
 		}
 
 		td {
 			position: relative;
+			height: var(--cell_height);
+			width: var(--cell_width);
+			padding: 5px;
+
 			color: var(--main_color);
 			background-color: var(--main_bg_color);
-			padding: 5px;
 			text-align: center;
-			height: var(--cell-height);
-			width: var(--cell-width);
-		}
-
-		@supports (-moz-appearance:none) {
-			td {
-				background-clip: padding-box;
-			}
 		}
 
 		td:hover {
@@ -144,13 +137,9 @@
 			background-color: var(--sel_bg_color);
 		}
 
-		#centre {
-			background-color: var(--sel_bg_color);
-		}
-
-		/* reset button */
 		#reset {
 			color: var(--main_color);
+			border: 2px solid var(--borders_color);
 			background-color: var(--main_bg_color);
 			display: block;
 			line-height: 10px;
