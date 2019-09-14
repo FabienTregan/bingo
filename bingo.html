@@ -44,8 +44,8 @@
 
 		function make_cells_same_size(nb_rows, nb_columns) {
 			var root_style = document.documentElement.style
-			root_style.setProperty("--cell-height", (100/nb_rows) + "%")
-			root_style.setProperty("--cell-width", (100/nb_columns) + "%")
+			root_style.setProperty("--cell-height", (100 / nb_rows) + "%")
+			root_style.setProperty("--cell-width", (100 / nb_columns) + "%")
 		}
 
 		function add_content(row, content) {
@@ -67,7 +67,7 @@
 
 			var marked = document.getElementsByClassName('marked')
 
-			while(marked.length > 0) {
+			while (marked.length > 0) {
 				marked[0].classList.remove('marked')
 			}
 		}
@@ -135,10 +135,8 @@
 			}
 		}
 
-		td:hover,
-		td.marked:hover {
-			color: var(--sel_color);
-			background-color: var(--hover_bg_color);
+		td:hover {
+			box-shadow: inset 0 0 0.5em 0.25em rgba(255, 128, 255, 0.75);
 		}
 
 		td.marked {
