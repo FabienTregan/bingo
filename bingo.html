@@ -1,50 +1,58 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+
+<html>
 <head>
 	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
 	<script type="application/javascript" src="contenu.js"></script>	<!-- change here to load specific bingo configuration -->
+
 	<script type="application/javascript">
-	//<![CDATA[
-	function generate(){
-		// vars
-		var tr, td, i, j;
-		var id_content=0;
-		// add title of the bingo
-		document.getElementById('title').textContent = title;
-		document.getElementsByTagName('title')[0].textContent = title;
-		// generate bingo table
-		var table = document.getElementById('grid');
-		table.removeChild(table.firstChild)
-		for (i = 0; i < row; i++) {
-			tr = document.createElement('tr');
-			for (j = 0; j < col; j++) {
-				td = document.createElement('td');
-				td.textContent = bingo[id_content];	// add content
-				td.addEventListener('click', sw_bingo);
-				tr.appendChild(td)
-				id_content=id_content+1;
+
+		function generate(){
+			// vars
+			var tr, td, i, j
+			var id_content=0
+			// add title of the bingo
+			document.getElementById('title').textContent = title
+			document.getElementsByTagName('title')[0].textContent = title
+			// generates bingo table
+			var table = document.getElementById('grid')
+			table.removeChild(table.firstChild)
+			for (i = 0; i < row; i++) {
+				tr = document.createElement('tr')
+				for (j = 0; j < col; j++) {
+					td = document.createElement('td')
+					td.textContent = bingo[id_content]	// adds content
+					td.addEventListener('click', sw_bingo)
+					tr.appendChild(td)
+					id_content=id_content+1
+				}
+				table.appendChild(tr)
 			}
-			table.appendChild(tr);
+			// reset button
+			document.getElementById('reset').addEventListener('click', reset_b)
 		}
-		// reset button
-		document.getElementById('reset').addEventListener('click', reset_b);
-	}
-	function sw_bingo(evt) {
-		classList = evt.target.classList;
-		if (classList.contains('selected')) {
-			classList.remove('selected'); 
-		} else {
-			classList.add('selected');
+		
+		function sw_bingo(evt) {
+			classList = evt.target.classList;
+			if (classList.contains('selected')) {
+				classList.remove('selected')
+			} else {
+				classList.add('selected')
+			}
 		}
-	}
-	function reset_b() {
-		for (let td of document.getElementsByTagName('td')) {
-			td.classList.remove('selected');
+
+		function reset_b() {
+			for (let td of document.getElementsByTagName('td')) {
+				td.classList.remove('selected')
+			}
 		}
-	}
-	//]]>
+
+		window.addEventListener('DOMContentLoaded', generate)
+		
 	</script>
+
 	<title></title>
+	
 	<style type="text/css">
 		/* vars */
 		:root {
@@ -116,7 +124,7 @@
 		}
 	</style>
 </head>
-<body onload="generate()">
+<body>
 	<h1 id="title"></h1>
 	<!-- placeholder table -->
 	<table id="grid"><tbody><tr><td></td></tr></tbody></table>
